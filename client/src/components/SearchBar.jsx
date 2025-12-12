@@ -14,7 +14,7 @@ export default function SearchBar() {
       return;
     }
     
-    navigate("/summary");
+    navigate("/VideoSummary");
   };
 
   return (
