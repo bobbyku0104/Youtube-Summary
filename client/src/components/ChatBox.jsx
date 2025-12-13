@@ -18,15 +18,18 @@ export default function ChatBox() {
   };
 
   return (
-    <div className="bg-white shadow rounded-xl flex flex-col 
-                    h-[500px] sm:h-[550px] md:h-[600px] p-4 w-full">
-
+    <div
+      className="containerBG border border-zinc-300/10 shadow rounded-xl flex flex-col 
+                    h-[500px] sm:h-[550px] md:h-[600px] p-4 w-full"
+    >
       {/* Title */}
       <h2 className="text-lg sm:text-xl font-semibold mb-3">💬 Ask AI</h2>
 
       {/* Chat Messages */}
-      <div className="flex-1 overflow-y-auto bg-gray-50 rounded-lg p-3 
-                      text-sm sm:text-base">
+      <div
+        className="flex-1 border-t border-zinc-300/10 overflow-y-auto p-3 
+                      text-sm sm:text-base"
+      >
         {messages.map((msg, idx) => (
           <MessageBubble key={idx} {...msg} />
         ))}

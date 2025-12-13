@@ -1,26 +1,30 @@
-import React, { useState } from "react";
-import Navbar from "../components/Navbar/NavbarSecond";
+import React, { useContext, useState } from "react";
+import Navbar from "../components/Navbar/Navbar";
 import VideoPreview from "../components/VideoPreview";
 import ChatBox from "../components/ChatBox";
 import VideoInfo from "../components/VideoInfo";
 import Content from "../components/contentsymmarysection/Content";
+import ChatBoxButton from "../components/common/ChatBoxButton";
+import { GlobalContext } from "../context/GlobalStates";
 
 export default function VideoSummaryPage() {
   const [activeTab, setActiveTab] = useState("summary");
+  const { changeChatVisiblity, isChatOpen } = useContext(GlobalContext);
 
   return (
-    <div className="w-full bg-[rgb(242,243,245)] min-h-screen">
+    <div className="w-full bodyBG min-h-screen text-white ">
       <div className="mb-6">
         <Navbar />
       </div>
+      <ChatBoxButton fn={changeChatVisiblity} />
 
       {/* Main Layout */}
       <div
         className="grid grid-cols-1 lg:grid-cols-3 gap-6 
                       px-3 sm:px-6 md:px-10 
-                      max-w-7xl mx-auto w-full"
+                      max-w-8xl mx-auto w-full"
       >
-        <div className="md:col-span-2 bg-white rounded-xl shadow p-4 sm:p-5">
+        <div className="md:col-span-2 containerBG border border-zinc-300/10 rounded-xl shadow p-4 sm:p-5">
           <VideoPreview
             imageURL={
               "https://i.ytimg.com/vi/h8-qemIbXbo/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLB6-10MXLHT9rml4ywTLKpNL0kKPw"
@@ -29,7 +33,7 @@ export default function VideoSummaryPage() {
           <VideoInfo />
         </div>
 
-        <div className="w-full">
+        <div className="hidden lg:flex w-full">
           <ChatBox />
         </div>
       </div>

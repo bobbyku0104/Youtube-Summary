@@ -5,5 +5,17 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
+}
+
+.navBG {
+  background: #0b0f1c;
+}
+
+.bodyBG {
+  background: #080c16;
+}
+
+.containerBG {
+  background: #0b111e;
 }
