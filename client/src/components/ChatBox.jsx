@@ -18,10 +18,7 @@ export default function ChatBox() {
   };
 
   return (
-    <div
-      className="containerBG border border-zinc-300/10 shadow rounded-xl flex flex-col 
-                    h-[500px] sm:h-[550px] md:h-[600px] p-4 w-full"
-    >
+    <div className="containerBG border border-zinc-300/10 shadow rounded-xl flex flex-col p-4 w-full">
       {/* Title */}
       <h2 className="text-lg sm:text-xl font-semibold mb-3">💬 Ask AI</h2>
 

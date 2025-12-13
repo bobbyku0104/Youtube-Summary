@@ -39,7 +39,7 @@ export default function VideoSummaryPage() {
       </div>
 
       {/*  TABS  */}
-      <div className="w-full max-w-7xl mx-auto px-3 sm:px-6 md:px-10">
+      <div className="w-full max-w-8xl mx-auto px-3 sm:px-6 md:px-10">
         <div className="mt-10 flex gap-5 text-[18px]">
           {["summary", "transcript", "moments"].map((tab) => (
             <button
