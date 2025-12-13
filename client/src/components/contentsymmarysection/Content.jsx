@@ -3,7 +3,7 @@ import React from "react";
 const Content = ({ activeTab }) => {
   return (
     <div className="px-3 sm:px-6 md:px-10 max-w-8xl mx-auto w-full">
-      <div className="w-full my-10 containerBG text-white rounded-2xl shadow p-6 sm:p-8">
+      <div className="w-full mb-10 containerBG text-white rounded-2xl shadow p-6 sm:p-8">
 
         {/* SUMMARY */}
         {activeTab === "summary" && (

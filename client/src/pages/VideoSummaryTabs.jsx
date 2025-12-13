@@ -12,7 +12,7 @@ export default function VideoSummaryPage() {
   const { changeChatVisiblity, isChatOpen } = useContext(GlobalContext);
 
   return (
-    <div className="w-full bodyBG min-h-screen text-white ">
+    <div className="w-full bodyBG min-h-screen text-white">
       <div className="mb-6">
         <Navbar />
       </div>
