@@ -12,9 +12,9 @@ export default function VideoInfo() {
       </p>
 
       <div className="flex gap-2 mt-3">
-        <span className="px-3 py-1 bg-gray-200 rounded-lg">React</span>
-        <span className="px-3 py-1 bg-gray-200 rounded-lg">Web Development</span>
-        <span className="px-3 py-1 bg-gray-200 rounded-lg">JavaScript</span>
+        <span className="px-3 py-1 bg-purple-600 rounded-lg">React</span>
+        <span className="px-3 py-1 bg-purple-400 rounded-lg">Web Development</span>
+        <span className="px-3 py-1 bg-purple-500 rounded-lg">JavaScript</span>
       </div>
     </div>
   );
