@@ -2,10 +2,12 @@ import React from "react";
 
 const Content = ({ activeTab }) => {
   return (
-    <div className="px-3 sm:px-6 md:px-10 max-w-8xl mx-auto w-full">
-      <div className="w-full mb-10 containerBG text-white rounded-2xl shadow p-6 sm:p-8">
+    <div className="px-3 sm:px-6 md:px-10 max-w-8xl mx-auto w-full mt-6">
+      <div className="w-full mb-2 containerBG text-white rounded-2xl shadow p-6 sm:p-8 h-[320px] sm:h-[400px] md:h-[450px] overflow-y-auto">
 
         {/* SUMMARY */}
+
+        
         {activeTab === "summary" && (
           <>
            <h2 className="text-2xl font-bold text-gray-200 mb-4">Summary</h2>
@@ -56,7 +58,7 @@ const Content = ({ activeTab }) => {
         {/* TRANSCRIPT */}
         {activeTab === "transcript" && (
           <>
-            <h2 className="text-2xl font-bold mb-4 text-white">Transcript</h2>
+            <h2 className="text-2xl sm:text-2xl font-bold mb-4 text-white">Transcript</h2>
             <p className="text-gray-200">
               Hello everyone, welcome to this React tutorial...
             </p>
@@ -76,18 +78,30 @@ const Content = ({ activeTab }) => {
         )}
 
         {/* ACTION BUTTONS */}
-        <div className="flex gap-4 mt-8">
-          <button className="border px-5 py-2 rounded-2xl">💾 Save</button>
-          <button className="border px-5 py-2 rounded-2xl">📥 PDF</button>
-          <button className="border px-5 py-2 rounded-2xl">📋 Copy</button>
+        <div className="  py-2 sm:px-4   flex gap-3  mt-4    sticky bottom-0  lg:flex-row
+          
+            border-t border-white/20
+            p-1 " >
+          <button className="border px-5 py-2  rounded-2xl bg-purple-800">💾 Save</button>
+          <button className="border px-5 py-2 rounded-2xl  bg-purple-800">📥 PDF</button>
+          <button className="border px-5 py-2 rounded-2xl  bg-purple-800">📋 Copy</button>
         </div>
 
+  
+
       </div>
+      
     </div>
+
+   
   );
 };
 
 export default Content;
+
+
+
+
 
 
 
