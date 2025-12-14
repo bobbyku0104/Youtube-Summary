@@ -20,3 +20,7 @@ body {
 .containerBG {
   background: #0b111e;
 }
+
+button {
+  cursor: pointer;
+}

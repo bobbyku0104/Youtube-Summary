@@ -12,10 +12,28 @@ export default function VideoSummaryPage() {
   const { changeChatVisiblity, isChatOpen } = useContext(GlobalContext);
 
   return (
-    <div className="w-full bodyBG min-h-screen text-white">
+    <div className="w-full bodyBG min-h-screen text-white relative">
+      {/* chat box for phone view */}
+
+      <div
+        className={` ${
+          isChatOpen ? "" : "hidden"
+        } py-15 px-5 z-19 backdrop-blur-md h-screen w-full fixed`}
+      >
+        {/* close chat button */}
+        <button
+          onClick={changeChatVisiblity}
+          className="absolute right-10 top-20"
+        >
+          X
+        </button>
+        <ChatBox />
+      </div>
+
       <div className="mb-6">
         <Navbar />
       </div>
+
       <ChatBoxButton fn={changeChatVisiblity} />
 
       {/* Main Layout */}
