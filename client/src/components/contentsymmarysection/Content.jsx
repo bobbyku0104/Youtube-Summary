@@ -2,8 +2,8 @@ import React from "react";
 
 const Content = ({ activeTab }) => {
   return (
-    <div className="px-3 sm:px-6 md:px-10 max-w-8xl mx-auto w-full mt-6 ">
-      <div className="w-full mb-2 containerBG text-white rounded-2xl shadow p-6 sm:p-8 h-[720px] md:h-[500px] overflow-y-auto hide-scrollbar">
+    <div className="px-3 sm:px-6 md:px-10 max-w-8xl mx-auto w-full mt-6">
+      <div className="w-full mb-2 containerBG text-white rounded-2xl shadow p-6 sm:p-8 h-[500px] md:h-[500px] overflow-y-auto hide-scrollbar border border-zinc-300/10">
         {/* SUMMARY */}
 
         {activeTab === "summary" && (
@@ -102,7 +102,6 @@ const Content = ({ activeTab }) => {
             </button>
           ))}
         </div>
-        
       </div>
     </div>
   );
