@@ -7,6 +7,7 @@ body {
   margin: 0;
   font-family: "Inter", sans-serif;
   background-color: #080c16;
+  
 }
 
 .navBG {
@@ -23,4 +24,23 @@ body {
 
 button {
   cursor: pointer;
+}
+
+/* Chrome, Edge, Safari */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Firefox */
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+
+/* IE / Legacy Edge */
+.hide-scrollbar {
+  -ms-overflow-style: none;
+}
+
+.hide-scrollbar {
+  overflow: auto;
 }
