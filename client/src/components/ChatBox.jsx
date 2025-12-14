@@ -40,14 +40,14 @@ export default function ChatBox() {
           placeholder="Ask a question..."
           className="flex-1 border rounded-lg px-3 py-2 
                      text-sm sm:text-base
-                     outline-none focus:ring-2 focus:ring-indigo-500"
+                     outline-none focus:ring-2 "
         />
 
         <button
           onClick={sendMessage}
-          className="bg-indigo-600 text-white px-4 sm:px-5 py-2 
+          className="bg-purple-600 text-white px-4 sm:px-5 py-2 
                      rounded-lg text-sm sm:text-base
-                     hover:bg-indigo-700 transition"
+                     hover:bg-purple-800 transition"
         >
           Send
         </button>
