@@ -58,16 +58,16 @@ export default function VideoSummaryPage() {
 
       {/*  TABS  */}
       <div className="w-full max-w-8xl mx-auto px-3 sm:px-6 md:px-10">
-        <div className="mt-10 flex gap-5 text-[18px]">
+        <div className="mt-10 flex gap-5">
           {["summary", "transcript", "moments"].map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
-              className={`px-4 py-2 rounded-lg transition
+              className={`px-4 py-2 rounded-xl transition-all duration-200 ease-in-out
                 ${
                   activeTab === tab
-                    ? "bg-black text-white"
-                    : "border-b-2 border-black"
+                    ? "containerBG text-white border border-purple-500"
+                    : "border border-black containerBG"
                 }`}
             >
               {tab === "summary" && "Summary"}
