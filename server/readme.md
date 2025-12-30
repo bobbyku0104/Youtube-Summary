@@ -19,26 +19,60 @@ Response
 {
     "status": "success",
     "message": "summarized successfully",
-
     "data": {
-        "title": "Stranded 100 Ft Up: 30-Day Survival Challenge",
-        "overall_summary": "This video details a 30-day survival challenge where two strangers, Alison (a construction worker) and Angus (a reality TV star), are trapped 100 feet in the air on a shrinking platform, competing for a $250,000 prize. They endure harsh weather, dwindling resources, and increasing isolation. Angus struggles with the conditions and challenges, eventually falling from a balance beam and being eliminated. Alison continues alone, facing daily tasks that further reduce her living space. In the end, she secures her guaranteed $250,000 prize and an additional $50,000 gift card, opting out of a final risky balance beam challenge to double her winnings, a decision later validated when she attempts it for fun and nearly falls.",
+        "videoSummary": {
+            "title": "Surviving 30 Days 100ft Up for $250,000",
 
-        "key_takeaways": [
-            "Extreme high-stakes challenges expose individual strengths and weaknesses, testing both physical endurance and mental fortitude under pressure.",
-            "The incentive structure of competitive challenges can create tension and strategic decision-making, even between partners.",
-            "Prioritizing a guaranteed substantial gain over a risky, larger reward can be the most prudent path to success, especially when facing significant personal risk."
-        ],
+            "overall_summary": "Two strangers, Alison (a construction worker) and Angus (a UK reality TV star), are trapped",
 
-        "key_points": [
-            "The challenge involved two participants, Alison and Angus, living on a small platform 100 feet in the air for 30 days, competing for $250,000, with the prize going entirely to the sole survivor if one quits or falls.",
-            "Participants faced several challenges throughout the 30 days, many of which, particularly due to Angus's failures (e.g., target shooting, a 24-hour saw button vigil), resulted in the loss of platform space and valuable amenities like improved tents and food.",
-            "Angus was eliminated on Day 15 after failing a perilous balance beam challenge, leaving Alison alone to face the remaining days and further daily challenges (shooting balloons to prevent platform loss), eventually securing her guaranteed $250,000 and a $50,000 gift card by refusing to risk it all on the same balance beam challenge for a doubled prize.",
-            "Alison's final decision to take the guaranteed prize, rather than risking it all on the balance beam, was proven wise when she attempted the beam post-challenge and nearly fell, highlighting the dangers of ego in high-stakes situations."
-        ],
+            "key_takeaways": [
+                "Extreme environments and high stakes significantly amplify mental and physical pressure, affecting performance and decision-making.",
+                "The importance of perseverance and strategic thinking, especially when"
+            ],
+            "key_points": [
+                "Two strangers, Alison and Angus, were challenged to survive 30 days 100 ft in the air for a $250,000 prize.",
+                "Failing challenges resulted in a quarter of their platform being removed, creating progressively dangerous and confined living conditions.",
+                "Angus failed two crucial challenges (tennis ball target for tents and button-pressing for food), leading to significant platform loss and food deprivation.",
 
-        "conclusion": "Alison successfully navigated 30 days of extreme survival, securing $250,000 and a $50,000 gift card. Her ultimate decision to accept a guaranteed substantial prize over a high-risk attempt to double it demonstrated a pragmatic approach to the challenge, affirming the value of sensible choices under pressure."
+            ],
+            "conclusion": "Alison successfully survived the 30-day challenge, demonstrating remarkable resilience and strategic decision-making. Despite losing her partner and enduring immense physical and psychological hardship, she secured her $250,000 prize and an additional $50,000 gift card, choosing a guaranteed win over the high-risk pursuit of doubling her earnings, a decision proven prudent by her later struggles on the balance beam."
+        },
+        "transcript" : "Take off your blindfolds! I just trapped\nthese two strangers 100 ft in the air, and if they can ;#39;t even cry when I fell! How is this more sad? [laughs] Oh, I hate this decision. Alison! We support whatever you..."
     }
 }
 
+```
+
+Transcript should be passed with QnA asked by user in chat
+
+### Chat with AI
+
+```
+POST
+http://localhost:8080/ask
+
+body : {
+    question : "who won the challenge",
+    transcript : "VideoTranscriptHere"
+}
+```
+
+Response
+```
+{
+    "status": "success",
+    "message": "question answered",
+    "data": {
+        "question": "who won the challenge",
+        "answer": "Alison won the challenge and received $250,000, along with a $50,000 Starbucks gift card.",
+        "confidence": "high",
+        "supporting_evidence": [
+            "Alison, I need a decision. Do you want to leave with a guaranteed 250,000, plus your $50,000 Starbucks gift card?",
+            "Nolan, you gotta drop the check! -You sure, what? -I'm sure.",
+            "Which means you officially won that quarter of a million dollars!",
+            "And with that, Alison has won $250,000!"
+        ],
+        "not_found": false //true if asked out of the video 
+    }
+}
 ```
