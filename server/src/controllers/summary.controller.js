@@ -1,5 +1,5 @@
 import { getTranscriptWithFallback } from "../service/transcript.service.js";
-import { summarizeUsingGemini } from "../service/video.summary.service.js";
+import { summarizeUsingGemini } from "../service/summary.service.js";
 
 export async function summaryController(req, res) {
   const videoId = req.params.videoId;
@@ -21,7 +21,7 @@ export async function summaryController(req, res) {
       return res.status(200).json({
         status: "success",
         message: "summarized successfully",
-        data: videoSummary,
+        data: { videoSummary, transcript },
       });
     }
 
@@ -29,7 +29,6 @@ export async function summaryController(req, res) {
       status: "failed",
       message: "failed to generate transcript",
     });
-    
   } catch (error) {
     return res.status(500).json({
       status: "failed",
