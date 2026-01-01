@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../components/Navbar/Navbar";
 import VideoPreview from "../components/VideoPreview";
 import ChatBox from "../components/ChatBox";
@@ -8,10 +8,27 @@ import ChatBoxButton from "../components/common/ChatBoxButton";
 import { GlobalContext } from "../context/GlobalStates";
 import YouTubeVideoPlayer from "../components/YouTubeVideoPlayer";
 import BgGradient from "../components/common/BgGradient";
+import summarizeVideo from "../api/summaryApi";
 
 export default function VideoSummaryPage() {
   const [activeTab, setActiveTab] = useState("summary");
-  const { changeChatVisiblity, isChatOpen } = useContext(GlobalContext);
+  const {
+    changeChatVisiblity,
+    isChatOpen,
+    videoId,
+    setSummaryData,
+    summaData,
+  } = useContext(GlobalContext);
+
+  useEffect(() => {
+    if (videoId === null) return;
+    async function handleSummarize(videoId) {
+      const data = await summarizeVideo(videoId);
+      setSummaryData(data.data);
+    }
+
+    handleSummarize(videoId);
+  }, [videoId]);
 
   return (
     <div className="w-full bodyBG min-h-screen text-white relative">
@@ -47,7 +64,7 @@ export default function VideoSummaryPage() {
         <div className="md:col-span-2 containerBG border border-zinc-300/10 rounded-xl shadow p-4 sm:p-5 bg-red-500 z-2">
           {/* youtube player */}
           <div className="w-full flex items-center justify-center aspect-video rounded-xl overflow-hidden border border-zinc-300/10">
-            <YouTubeVideoPlayer videoID={"d-_ieXc4K7c"} />
+            <YouTubeVideoPlayer videoID={videoId} />
           </div>
           <VideoInfo
             title={`Modern React Development Masterclass
