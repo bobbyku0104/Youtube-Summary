@@ -9,7 +9,7 @@ function YouTubeVideoPlayer({ videoID }) {
   const opts = {
     width: "100%",
     playerVars: {
-      autoplay: 0,
+      autoplay: 1,
       rel: 0,
       modestbranding: 1,
     },
