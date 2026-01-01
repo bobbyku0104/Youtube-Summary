@@ -5,9 +5,7 @@ import App from "./App";
 import { GlobalProvider } from "./context/GlobalStates";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <GlobalProvider>
-      <App />
-    </GlobalProvider>
-  </React.StrictMode>
+  <GlobalProvider>
+    <App />
+  </GlobalProvider>
 );
