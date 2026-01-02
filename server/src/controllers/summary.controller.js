@@ -17,7 +17,10 @@ export async function summaryController(req, res) {
   try {
     const transcript = await getTranscriptWithFallback(videoId);
     if (transcript) {
+      console.log("Transcript Found, Now Summarizing it");
       const videoSummary = await summarizeUsingGemini(transcript);
+      console.log("summary function completed");
+
       return res.status(200).json({
         status: "success",
         message: "summarized successfully",
@@ -27,9 +30,11 @@ export async function summaryController(req, res) {
 
     return res.status(500).json({
       status: "failed",
-      message: "failed to generate transcript",
+      message: "failed to generate transcript, error in AI part",
     });
+    
   } catch (error) {
+    console.log("Error in summarizing");
     return res.status(500).json({
       status: "failed",
       message: "failed to summarize video",

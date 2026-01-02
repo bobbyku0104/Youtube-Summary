@@ -18,6 +18,8 @@ export async function summarizeUsingGemini(transcript) {
     throw new Error("Transcript is required");
   }
 
+  console.log("AI is SUmmarizing video");
+
   const prompt = `
   You are a professional content analyst and educator.
 
@@ -63,6 +65,7 @@ export async function summarizeUsingGemini(transcript) {
   try {
     return JSON.parse(response.text);
   } catch (error) {
+    console.log("AI response was not in JSON");
     throw new Error("AI response was not valid JSON");
   }
 }
