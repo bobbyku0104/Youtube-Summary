@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useState } from "react";
 
 export const GlobalContext = createContext();
 
@@ -66,6 +66,7 @@ export const GlobalProvider = ({ children }) => {
     setYoutubeData,
     setSummaryData,
     summaryData,
+   
   };
 
   return (

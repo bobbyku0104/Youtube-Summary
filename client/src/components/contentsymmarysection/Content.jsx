@@ -1,6 +1,24 @@
 import React from "react";
+import { useContext } from "react";
+import { GlobalContext } from "../../context/GlobalStates";
+
+
+
 
 const Content = ({ activeTab }) => {
+
+const { summaryData } = useContext(GlobalContext);
+
+if (!summaryData) {
+  return (
+    <div className="px-3 sm:px-6 md:px-10 mt-6 text-gray-400">
+      Loading content...
+    </div>
+  );
+}
+
+const {videoSummary ,transcript } = summaryData;
+
   return (
     <div className="px-3 sm:px-6 md:px-10 max-w-8xl mx-auto w-full mt-6">
       <div className="w-full mb-2 containerBG text-white rounded-2xl shadow p-6 sm:p-8 h-[500px] md:h-[500px] overflow-y-auto hide-scrollbar border border-zinc-300/10">
@@ -8,15 +26,15 @@ const Content = ({ activeTab }) => {
 
         {activeTab === "summary" && (
           <>
-            <h2 className="text-2xl font-bold text-gray-200 mb-4">Summary</h2>
+            <h2 className="text-2xl font-bold text-gray-200 mb-4">
+              {videoSummary.title}
+            </h2>
 
             <p className="text-gray-200 leading-relaxed">
-              This comprehensive video explores modern React development
-              practices and patterns. The presenter covers key concepts
-              including:
+              {videoSummary.overall_summary}
             </p>
 
-            <ul className="list-disc ml-6 mt-4 space-y-2 text-gray-200">
+            {/* <ul className="list-disc ml-6 mt-4 space-y-2 text-gray-200">
               <li>
                 <strong>Component Architecture</strong> – Best practices for
                 structuring React components with hooks and composition patterns
@@ -36,30 +54,25 @@ const Content = ({ activeTab }) => {
                 <strong>Testing Strategies</strong> – Unit testing, integration
                 testing, and E2E best practices
               </li>
-            </ul>
+            </ul> */}
 
             <h3 className="text-xl font-semibold text-gray-200 mt-6 mb-2">
               Key Takeaways:
             </h3>
 
             <ul className="list-disc ml-6 space-y-2 text-gray-200">
-              <li>
-                Use functional components with hooks for cleaner, reusable code
-              </li>
-              <li>
-                Implement error boundaries to handle component failures
-                gracefully
-              </li>
-              <li>
-                Optimize performance by understanding React's rendering cycle
-              </li>
-              <li>Write tests to ensure code quality and avoid regressions</li>
+              {videoSummary?.key_takeaways?.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
             </ul>
 
-            <p className="text-gray-200 leading-relaxed mt-6">
-              The video also discusses emerging patterns like Suspense and
-              concurrent rendering that are shaping the future of React
-              development.
+            <p className="mt-4 text-gray-300">
+              <strong className="text-xl font-semibold text-gray-200 mt-6 mb-2 ">
+                Conclusion:
+              </strong>
+              <p className="list-disc ml-6 space-y-2 text-gray-200">
+                {videoSummary.conclusion}
+              </p>
             </p>
           </>
         )}
@@ -70,9 +83,7 @@ const Content = ({ activeTab }) => {
             <h2 className="text-2xl sm:text-2xl font-bold mb-4 text-white">
               Transcript
             </h2>
-            <p className="text-gray-200">
-              Hello everyone, welcome to this React tutorial...
-            </p>
+            <p className="text-gray-200">{transcript}</p>
           </>
         )}
 
@@ -81,9 +92,9 @@ const Content = ({ activeTab }) => {
           <>
             <h2 className="text-2xl font-bold mb-4 text-white">Key Moments</h2>
             <ul className="list-disc ml-6 space-y-2 text-gray-200">
-              <li>0:45 – Introduction</li>
-              <li>3:10 – useState vs useReducer</li>
-              <li>6:30 – Performance tips</li>
+              {videoSummary.key_points?.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
             </ul>
           </>
         )}
@@ -108,3 +119,13 @@ const Content = ({ activeTab }) => {
 };
 
 export default Content;
+
+
+
+
+
+
+
+
+
+
