@@ -10,12 +10,7 @@ export default function VideoPreview({ imageURL }) {
           src={imageURL}
           alt=""
         />
-        {/* <span className="text-5xl">🎬</span>
-        <div className="p-4 ">
-        <p className="text-gray-800 font-medium text-lg">YouTube Video Preview</p>
-        <p className="text-blue-600 text-sm mt-1 truncate">
-          https://youtu.be/exampleLink123
-        </p> */}
+       
       </div>
     </div>
   );

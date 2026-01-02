@@ -17,13 +17,14 @@ export default function VideoSummaryPage() {
     isChatOpen,
     videoId,
     setSummaryData,
-    summaData,
+    summaryData,
   } = useContext(GlobalContext);
 
   useEffect(() => {
     if (videoId === null) return;
     async function handleSummarize(videoId) {
       const data = await summarizeVideo(videoId);
+       console.log("✅ Full API response:", data);
       setSummaryData(data.data);
     }
 
