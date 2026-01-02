@@ -32,12 +32,12 @@ export async function summaryController(req, res) {
       status: "failed",
       message: "failed to generate transcript, error in AI part",
     });
-    
   } catch (error) {
     console.log("Error in summarizing");
     return res.status(500).json({
       status: "failed",
-      message: "failed to summarize video",
+      message: "failed to summarize video try changing API Key",
+      err: error,
     });
   }
 }
