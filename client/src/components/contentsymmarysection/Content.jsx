@@ -2,26 +2,22 @@ import React from "react";
 import { useContext } from "react";
 import { GlobalContext } from "../../context/GlobalStates";
 
-
-
-
 const Content = ({ activeTab }) => {
+  const { summaryData } = useContext(GlobalContext);
 
-const { summaryData } = useContext(GlobalContext);
+  if (!summaryData) {
+    return (
+      <div className="px-3 sm:px-6 md:px-10 mt-6 text-gray-400">
+        Loading content...
+      </div>
+    );
+  }
 
-if (!summaryData) {
-  return (
-    <div className="px-3 sm:px-6 md:px-10 mt-6 text-gray-400">
-      Loading content...
-    </div>
-  );
-}
-
-const {videoSummary ,transcript } = summaryData;
+  const { videoSummary, transcript } = summaryData;
 
   return (
     <div className="px-3 sm:px-6 md:px-10 max-w-8xl mx-auto w-full mt-6">
-      <div className="w-full mb-2 containerBG text-white rounded-2xl shadow p-6 sm:p-8 h-[500px] md:h-[500px] overflow-y-auto hide-scrollbar border border-zinc-300/10">
+      <div className="w-full mb-2 containerBG text-white rounded-2xl shadow p-6 sm:p-8 h-[500px] md:h-[500px] overflow-y-auto hide-scrollbar border border-zinc-300/10 ">
         {/* SUMMARY */}
 
         {activeTab === "summary" && (
@@ -34,28 +30,6 @@ const {videoSummary ,transcript } = summaryData;
               {videoSummary.overall_summary}
             </p>
 
-            {/* <ul className="list-disc ml-6 mt-4 space-y-2 text-gray-200">
-              <li>
-                <strong>Component Architecture</strong> – Best practices for
-                structuring React components with hooks and composition patterns
-              </li>
-
-              <li>
-                <strong>State Management</strong> – Comparison of useState,
-                useReducer, and Context API for managing application state
-              </li>
-
-              <li>
-                <strong>Performance Optimization</strong> – Memoization, code
-                splitting, and lazy loading techniques
-              </li>
-
-              <li>
-                <strong>Testing Strategies</strong> – Unit testing, integration
-                testing, and E2E best practices
-              </li>
-            </ul> */}
-
             <h3 className="text-xl font-semibold text-gray-200 mt-6 mb-2">
               Key Takeaways:
             </h3>
@@ -66,14 +40,23 @@ const {videoSummary ,transcript } = summaryData;
               ))}
             </ul>
 
-            <p className="mt-4 text-gray-300">
-              <strong className="text-xl font-semibold text-gray-200 mt-6 mb-2 ">
+            <p className="mt-4 text-gray-300 mb-4">
+              <strong className="text-xl font-semibold text-gray-200  mb-2 ">
                 Conclusion:
               </strong>
-              <p className="list-disc ml-6 space-y-2 text-gray-200">
+              <p className="list-disc ml-3 space-y-2 text-gray-200">
                 {videoSummary.conclusion}
               </p>
             </p>
+
+            <strong className="text-xl font-semibold text-gray-200 mt-4 mb-2 ">
+              key points:
+            </strong>
+            <ul className="list-disc ml-6 space-y-2 text-gray-200">
+              {videoSummary.key_points?.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
           </>
         )}
 
@@ -119,13 +102,3 @@ const {videoSummary ,transcript } = summaryData;
 };
 
 export default Content;
-
-
-
-
-
-
-
-
-
-
