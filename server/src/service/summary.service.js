@@ -60,7 +60,7 @@ export async function summarizeUsingGemini(transcript) {
     contents: prompt,
   });
 
-  console.log(response.text);
+  console.log("AI Summary is Completed...");
 
   try {
     return JSON.parse(response.text);
