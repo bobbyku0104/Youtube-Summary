@@ -30,7 +30,9 @@ export async function cacheVideoData(videoId, transcript, summary) {
     const key = `videoId:${videoId}`;
     const val = [{ transcript: transcript, summary: summary }];
 
-    await client.set(key, JSON.stringify(val));
+    await client.set(key, JSON.stringify(val), {
+      NX: true,
+    });
     console.log("Data Cached");
   } catch (error) {
     return err;
