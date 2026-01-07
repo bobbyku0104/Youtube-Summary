@@ -1,5 +1,6 @@
 import { getTranscriptWithFallback } from "../service/transcript.service.js";
 import { summarizeUsingGemini } from "../service/summary.service.js";
+import { cacheVideoData, getCacheVideoData } from "../redis/redisClient.js";
 
 export async function summaryController(req, res) {
   const videoId = req.params.videoId;
@@ -15,15 +16,39 @@ export async function summaryController(req, res) {
 
   //   get transcript
   try {
+    // check for cached video data
+    const cachedVideoData = await getCacheVideoData(videoId);
+    if (cachedVideoData) {
+      console.log("Video Data Found in Cache, sent as response");
+      return res.status(200).json({
+        status: "success",
+        message: "summarized successfully",
+        source: "cached",
+        data: {
+          videoSummary: cachedVideoData.summary,
+          transcript: cachedVideoData.transcript,
+        },
+      });
+    } else {
+      console.log("Video is Not Cached");
+    }
+
+    // if cache data not found
+
     const transcript = await getTranscriptWithFallback(videoId);
     if (transcript) {
       console.log("Transcript Found, Now Summarizing it");
       const videoSummary = await summarizeUsingGemini(transcript);
       console.log("summary function completed");
 
+      console.log("Caching VideoData...");
+      await cacheVideoData(videoId, transcript, videoSummary);
+
+      console.log("Video Data Cached..");
       return res.status(200).json({
         status: "success",
         message: "summarized successfully",
+        source: "fresh data",
         data: { videoSummary, transcript },
       });
     }
