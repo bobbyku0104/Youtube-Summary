@@ -25,17 +25,17 @@ export async function connectToRedis() {
   }
 }
 
-export async function cacheVideoData(videoId, transcript, summary) {
+export async function cacheVideoData(videoId, transcript, videoSummary) {
   try {
     const key = `videoId:${videoId}`;
-    const val = [{ transcript: transcript, summary: summary }];
+    const val = { transcript: transcript, summary: videoSummary };
 
     await client.set(key, JSON.stringify(val), {
       NX: true,
     });
     console.log("Data Cached");
   } catch (error) {
-    return err;
+    console.log("Error in Caching VideoData", error);
   }
 }
 
@@ -43,8 +43,9 @@ export async function getCacheVideoData(videoId) {
   try {
     const key = `videoId:${videoId}`;
     const data = await client.get(key);
-    return data;
+    const parsedData = JSON.parse(data);
+    return parsedData;
   } catch (error) {
-    throw error;
+    console.error("Error while Fetching Cached Data", error);
   }
 }
